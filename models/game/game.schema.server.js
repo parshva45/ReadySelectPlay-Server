@@ -18,7 +18,7 @@ var gameSchema = mongoose.Schema({
   designers: [String],
   publishers: [String],
   artists: [String],
-  playerPollResults: [{type: mongoose.Schema.Types.ObjectId}]
+  playerPollResults: []
 }, {collection: 'game'});
 
 module.exports = gameSchema;

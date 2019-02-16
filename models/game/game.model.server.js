@@ -6,8 +6,13 @@ function getAllGames() {
   return gameModel.find();
 }
 
+function createGame(game) {
+  return gameModel.create(game);
+}
+
 var api ={
-  getAllGames: getAllGames
+  getAllGames: getAllGames,
+  createGame: createGame
 };
 
 module.exports = api;

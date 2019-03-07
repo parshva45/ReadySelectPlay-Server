@@ -4,6 +4,13 @@ module.exports = function (app) {
 
   app.get('/api/game', getAllGames);
   app.post('/api/game', createGame);
+  app.get('/api/game/:gameId', getGameById);
+
+  function getGameById(req, res) {
+    var gameId = req.params['gameId'];
+    gameModel.findGameById(gameId)
+      .then(game => res.send(game));
+  }
 
   function getAllGames(req, res) {
     return gameModel

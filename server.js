@@ -36,7 +36,9 @@ app.use(session({
 
 var gameService = require('./services/game.service.server');
 var roomService = require('./services/room.service.server');
+var userService = require('./services/user.service.server');
 gameService(app);
 roomService(app);
+userService(app);
 
 app.listen(process.env.PORT || 4000);

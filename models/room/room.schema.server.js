@@ -5,7 +5,8 @@ var roomSchema = mongoose.Schema({
   games: [Number],
   users: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'}],
   isVotingInProgress: Boolean,
-  results: [Number]
+  results: [Number],
+  filteredGames: [Number]
 }, {collection: 'room'});
 
 module.exports = roomSchema;

@@ -14,10 +14,22 @@ function findRoomById(roomId) {
   return roomModel.findOne({_id: roomId})
 }
 
+function initializeVoting(roomId, newRoom) {
+  return roomModel.update({
+    _id: roomId
+  }, {
+    $set: {
+      filteredGames: newRoom.filteredGames,
+      isVotingInProgress: newRoom.isVotingInProgress
+    }
+  })
+}
+
 var api ={
   getAllRooms: getAllRooms,
   createRoom: createRoom,
-  findRoomById: findRoomById
+  findRoomById: findRoomById,
+  initializeVoting: initializeVoting
 };
 
 module.exports = api;

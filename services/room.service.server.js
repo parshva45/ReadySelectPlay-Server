@@ -7,11 +7,20 @@ module.exports = function (app) {
   app.post('/api/room', createRoom);
   app.get('/api/room/:roomId', getRoomById);
   app.get('/api/room/:roomId/result', getRoomResult);
+  app.put('/api/room/:roomId/result/add', addRoomResult);
   app.put('/api/room/:roomId', initializeVoting);
   app.put('/api/room/:roomId/game/add',addGame);
   app.put('/api/room/:roomId/user/add',addUser);
   app.put('/api/room/:roomId/game/remove',removeGame);
   app.put('/api/room/:roomId/user/remove',removeUser);
+
+  function addRoomResult(req, res) {
+      const gameId = req.body.gameId;
+      roomModel.addRoomResult(req.params['roomId'], gameId)
+          .then(function (response) {
+              res.send(response);
+          })
+  }
 
   function addGame(req, res) {
     const gameId = req.body.gameId;

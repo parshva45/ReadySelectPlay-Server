@@ -53,6 +53,13 @@ function removeUser(roomId, userId) {
   });
 }
 
+function addRoomResult(roomId, gameId) {
+  return roomModel.update({
+    _id: roomId
+  },{$push:{"results":gameId}
+  })
+}
+
 var api ={
   getAllRooms: getAllRooms,
   createRoom: createRoom,
@@ -61,7 +68,8 @@ var api ={
   addGame: addGame,
   addUser: addUser,
   removeUser: removeUser,
-  removeGame: removeGame
+  removeGame: removeGame,
+  addRoomResult: addRoomResult
 };
 
 module.exports = api;

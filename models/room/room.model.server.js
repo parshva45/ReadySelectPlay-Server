@@ -25,11 +25,43 @@ function initializeVoting(roomId, newRoom) {
   })
 }
 
+function addGame(roomId, gameId) {
+  return roomModel.update({
+   _id: roomId
+  },{$push:{"games":gameId}
+  });
+}
+
+function addUser(roomId, userId) {
+  return roomModel.update({
+    _id: roomId
+  },{$push:{"users":userId}
+  });
+}
+
+function removeGame(roomId, gameId) {
+  return roomModel.update({
+    _id: roomId
+  },{$pull:{"games":gameId}
+  });
+}
+
+function removeUser(roomId, userId) {
+  return roomModel.update({
+    _id: roomId
+  },{$pull:{"users":userId}
+  });
+}
+
 var api ={
   getAllRooms: getAllRooms,
   createRoom: createRoom,
   findRoomById: findRoomById,
-  initializeVoting: initializeVoting
+  initializeVoting: initializeVoting,
+  addGame: addGame,
+  addUser: addUser,
+  removeUser: removeUser,
+  removeGame: removeGame
 };
 
 module.exports = api;

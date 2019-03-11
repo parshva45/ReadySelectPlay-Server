@@ -14,28 +14,32 @@ module.exports = function (app) {
   app.put('/api/room/:roomId/user/remove',removeUser);
 
   function addGame(req, res) {
-      roomModel.addGame(req.params['roomId'], req.body)
+    const gameId = req.body.gameId;
+      roomModel.addGame(req.params['roomId'], gameId)
           .then(function (response) {
               res.send(response);
           })
   }
 
   function addUser(req, res) {
-      roomModel.addUser(req.params['roomId'], req.body)
+      const userId = req.body.userId;
+      roomModel.addUser(req.params['roomId'], userId)
           .then(function (response) {
               res.send(response);
           })
   }
 
   function removeGame(req, res) {
-      roomModel.removeGame(req.params['roomId'], req.body)
+    const gameId = req.body.gameId;
+      roomModel.removeGame(req.params['roomId'], gameId)
           .then(function (response) {
               res.send(response);
           })
   }
 
   function removeUser(req, res) {
-      roomModel.removeUser(req.params['roomId'], req.body)
+    const userId = req.body.userId;
+      roomModel.removeUser(req.params['roomId'], userId)
           .then(function (response) {
               res.send(response);
           })

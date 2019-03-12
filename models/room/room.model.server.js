@@ -73,6 +73,14 @@ function setName(roomId, name) {
   });
 }
 
+function setFilters(roomId, filters) {
+  return roomModel.update({
+    _id: roomId
+  }, {
+    $set: {"appliedFilters": filters}
+  });
+}
+
 var api = {
   getAllRooms: getAllRooms,
   createRoom: createRoom,
@@ -83,7 +91,8 @@ var api = {
   removeUser: removeUser,
   removeGame: removeGame,
   addRoomResult: addRoomResult,
-  setName: setName
+  setName: setName,
+  setFilters: setFilters
 };
 
 module.exports = api;

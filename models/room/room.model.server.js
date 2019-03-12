@@ -27,48 +27,53 @@ function initializeVoting(roomId, newRoom) {
 
 function addGame(roomId, gameId) {
   return roomModel.update({
-   _id: roomId
-  },{$push:{"games":gameId}
+    _id: roomId
+  }, {
+    $push: {"games": gameId}
   });
 }
 
 function addUser(roomId, userId) {
   return roomModel.update({
     _id: roomId
-  },{$push:{"users":userId}
+  }, {
+    $push: {"users": userId}
   });
 }
 
 function removeGame(roomId, gameId) {
   return roomModel.update({
     _id: roomId
-  },{$pull:{"games":gameId}
+  }, {
+    $pull: {"games": gameId}
   });
 }
 
 function removeUser(roomId, userId) {
   return roomModel.update({
     _id: roomId
-  },{$pull:{"users":userId}
+  }, {
+    $pull: {"users": userId}
   });
 }
 
-<<<<<<< Updated upstream
 function addRoomResult(roomId, gameId) {
   return roomModel.update({
     _id: roomId
-  },{$push:{"results":gameId}
-  })
-=======
+  }, {
+    $push: {"results": gameId}
+  });
+}
+
 function setName(roomId, name) {
   return roomModel.update({
     _id: roomId
-  }, {$set:{"name":name}
+  }, {
+    $set: {"name": name}
   });
->>>>>>> Stashed changes
 }
 
-var api ={
+var api = {
   getAllRooms: getAllRooms,
   createRoom: createRoom,
   findRoomById: findRoomById,
@@ -77,11 +82,8 @@ var api ={
   addUser: addUser,
   removeUser: removeUser,
   removeGame: removeGame,
-<<<<<<< Updated upstream
-  addRoomResult: addRoomResult
-=======
+  addRoomResult: addRoomResult,
   setName: setName
->>>>>>> Stashed changes
 };
 
 module.exports = api;

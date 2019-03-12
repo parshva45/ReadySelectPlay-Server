@@ -27,29 +27,33 @@ function initializeVoting(roomId, newRoom) {
 
 function addGame(roomId, gameId) {
   return roomModel.update({
-   _id: roomId
-  },{$push:{"games":gameId}
+    _id: roomId
+  }, {
+    $push: {"games": gameId}
   });
 }
 
 function addUser(roomId, userId) {
   return roomModel.update({
     _id: roomId
-  },{$push:{"users":userId}
+  }, {
+    $push: {"users": userId}
   });
 }
 
 function removeGame(roomId, gameId) {
   return roomModel.update({
     _id: roomId
-  },{$pull:{"games":gameId}
+  }, {
+    $pull: {"games": gameId}
   });
 }
 
 function removeUser(roomId, userId) {
   return roomModel.update({
     _id: roomId
-  },{$pull:{"users":userId}
+  }, {
+    $pull: {"users": userId}
   });
 }
 
@@ -61,26 +65,34 @@ function addRoomResult(roomId, gameId) {
   });
 }
 
-  function setName(roomId, name) {
-    return roomModel.update({
-      _id: roomId
-    }, {
-      $set: {"name": name}
-    });
+function setName(roomId, name) {
+  return roomModel.update({
+    _id: roomId
+  }, {
+    $set: {"name": name}
+  });
+}
 
-  }
+function setFilters(roomId, filters) {
+  return roomModel.update({
+    _id: roomId
+  }, {
+    $set: {"appliedFilters": filters}
+  });
+}
 
-  var api = {
-    getAllRooms: getAllRooms,
-    createRoom: createRoom,
-    findRoomById: findRoomById,
-    initializeVoting: initializeVoting,
-    addGame: addGame,
-    addUser: addUser,
-    removeUser: removeUser,
-    removeGame: removeGame,
-    addRoomResult: addRoomResult,
-    setName: setName
-  };
+var api = {
+  getAllRooms: getAllRooms,
+  createRoom: createRoom,
+  findRoomById: findRoomById,
+  initializeVoting: initializeVoting,
+  addGame: addGame,
+  addUser: addUser,
+  removeUser: removeUser,
+  removeGame: removeGame,
+  addRoomResult: addRoomResult,
+  setName: setName,
+  setFilters: setFilters
+};
 
   module.exports = api;

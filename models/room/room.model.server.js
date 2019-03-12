@@ -53,11 +53,19 @@ function removeUser(roomId, userId) {
   });
 }
 
+<<<<<<< Updated upstream
 function addRoomResult(roomId, gameId) {
   return roomModel.update({
     _id: roomId
   },{$push:{"results":gameId}
   })
+=======
+function setName(roomId, name) {
+  return roomModel.update({
+    _id: roomId
+  }, {$set:{"name":name}
+  });
+>>>>>>> Stashed changes
 }
 
 var api ={
@@ -69,7 +77,11 @@ var api ={
   addUser: addUser,
   removeUser: removeUser,
   removeGame: removeGame,
+<<<<<<< Updated upstream
   addRoomResult: addRoomResult
+=======
+  setName: setName
+>>>>>>> Stashed changes
 };
 
 module.exports = api;

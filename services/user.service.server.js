@@ -4,11 +4,11 @@ module.exports = function (app) {
 
     app.get('/api/user', getAllUsers);
     app.post('/api/user', createUser);
-    app.get('/api/user/:name', getUserByName);
+    app.get('/api/user/:userId', getUserById);
 
-    function getUserByName(req, res) {
-        var name = req.params['name'];
-        userModel.findUserByName(name)
+    function getUserById(req, res) {
+        var userId = req.params['userId'];
+        userModel.findUserById(userId)
             .then(user => res.send(user));
     }
 

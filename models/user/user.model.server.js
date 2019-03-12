@@ -10,14 +10,14 @@ function createUser(user) {
   return userModel.create(user);
 }
 
-function findUserByName(name) {
-  return userModel.findOne({name: name})
+function findUserById(userId) {
+  return userModel.findOne({_id: userId})
 }
 
 var api ={
   getAllUsers: getAllUsers,
   createUser: createUser,
-  findUserByName: findUserByName
+  findUserById: findUserById
 };
 
 module.exports = api;

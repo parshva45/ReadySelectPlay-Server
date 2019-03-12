@@ -13,6 +13,15 @@ module.exports = function (app) {
   app.put('/api/room/:roomId/user/add',addUser);
   app.put('/api/room/:roomId/game/remove',removeGame);
   app.put('/api/room/:roomId/user/remove',removeUser);
+  app.put('/api/room/:roomId/name',setName);
+
+  function setName(req, res) {
+    const name = req.body.name;
+    roomModel.setName(req.params['roomId'], name)
+      .then(function (response) {
+        res.send(response);
+      })
+  }
 
   function addRoomResult(req, res) {
       const gameId = req.body.gameId;

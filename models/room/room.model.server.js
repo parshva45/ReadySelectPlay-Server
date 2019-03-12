@@ -53,35 +53,34 @@ function removeUser(roomId, userId) {
   });
 }
 
-<<<<<<< Updated upstream
 function addRoomResult(roomId, gameId) {
   return roomModel.update({
     _id: roomId
-  },{$push:{"results":gameId}
-  })
-=======
-function setName(roomId, name) {
-  return roomModel.update({
-    _id: roomId
-  }, {$set:{"name":name}
+  }, {
+    $push: {"results": gameId}
   });
->>>>>>> Stashed changes
 }
 
-var api ={
-  getAllRooms: getAllRooms,
-  createRoom: createRoom,
-  findRoomById: findRoomById,
-  initializeVoting: initializeVoting,
-  addGame: addGame,
-  addUser: addUser,
-  removeUser: removeUser,
-  removeGame: removeGame,
-<<<<<<< Updated upstream
-  addRoomResult: addRoomResult
-=======
-  setName: setName
->>>>>>> Stashed changes
-};
+  function setName(roomId, name) {
+    return roomModel.update({
+      _id: roomId
+    }, {
+      $set: {"name": name}
+    });
 
-module.exports = api;
+  }
+
+  var api = {
+    getAllRooms: getAllRooms,
+    createRoom: createRoom,
+    findRoomById: findRoomById,
+    initializeVoting: initializeVoting,
+    addGame: addGame,
+    addUser: addUser,
+    removeUser: removeUser,
+    removeGame: removeGame,
+    addRoomResult: addRoomResult,
+    setName: setName
+  };
+
+  module.exports = api;

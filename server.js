@@ -2,14 +2,17 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ready-select-play');
+// mongoose.connect('mongodb://localhost/ready-select-play');
+mongoose.connect('mongodb://jayanth:jayanth1@ds113866.mlab.com:13866/heroku_1769gsvn');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function(req, res, next) {
   var allowedOrigins = [
-    "http://localhost:4200"
+    "http://localhost:4200",
+    "https://ready-select-play.herokuapp.com"
+
   ];
   var origin = req.headers.origin;
   if(allowedOrigins.indexOf(origin) > -1){

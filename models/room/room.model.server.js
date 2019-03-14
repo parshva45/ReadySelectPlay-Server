@@ -61,7 +61,10 @@ function addRoomResult(roomId, gameId) {
   return roomModel.update({
     _id: roomId
   }, {
-    $push: {"results": gameId}
+    $push: {"results": gameId},
+    $set: {
+      "isVotingInProgress": false
+    }
   });
 }
 

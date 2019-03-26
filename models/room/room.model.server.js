@@ -46,10 +46,7 @@ function addVotes(roomId, voteList) {
   return roomModel.update({
     _id: roomId
   }, {
-    $push: {"votes": {$each:voteList}},
-    $set: {
-      "isVotingInProgress": false
-    }
+    $push: {"votes": {$each:voteList}}
   });
 }
 

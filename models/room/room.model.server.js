@@ -20,7 +20,8 @@ function initializeVoting(roomId, newRoom) {
   }, {
     $set: {
       filteredGames: newRoom.filteredGames,
-      isVotingInProgress: newRoom.isVotingInProgress
+      isVotingInProgress: newRoom.isVotingInProgress,
+      votes: []
     }
   })
 }
@@ -38,6 +39,17 @@ function addUser(roomId, userId) {
     _id: roomId
   }, {
     $push: {"users": userId}
+  });
+}
+
+function addVotes(roomId, voteList) {
+  return roomModel.update({
+    _id: roomId
+  }, {
+    $push: {"votes": {$each:voteList}},
+    $set: {
+      "isVotingInProgress": false
+    }
   });
 }
 
@@ -95,7 +107,8 @@ var api = {
   removeGame: removeGame,
   addRoomResult: addRoomResult,
   setName: setName,
-  setFilters: setFilters
+  setFilters: setFilters,
+  addVotes: addVotes
 };
 
   module.exports = api;

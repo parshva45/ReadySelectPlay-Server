@@ -14,6 +14,7 @@ module.exports = function (app) {
   app.put('/api/room/:roomId/game/remove',removeGame);
   app.put('/api/room/:roomId/user/remove',removeUser);
   app.put('/api/room/:roomId/name',setName);
+  app.put('/api/room/:roomId/vote',addVotes);
   app.put('/api/room/:roomId/filters',setFilters);
 
   function setName(req, res) {
@@ -35,6 +36,14 @@ module.exports = function (app) {
   function addRoomResult(req, res) {
       const gameId = req.body.gameId;
       roomModel.addRoomResult(req.params['roomId'], gameId)
+          .then(function (response) {
+              res.send(response);
+          })
+  }
+
+  function addVotes(req, res) {
+      const voteList = req.body.voteList;
+      roomModel.addVotes(req.params['roomId'], voteList)
           .then(function (response) {
               res.send(response);
           })

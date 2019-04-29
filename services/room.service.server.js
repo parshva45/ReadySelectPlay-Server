@@ -16,6 +16,7 @@ module.exports = function (app) {
   app.put('/api/room/:roomId/name',setName);
   app.put('/api/room/:roomId/vote',addVotes);
   app.put('/api/room/:roomId/filters',setFilters);
+  app.delete('/api/room/:roomId',deleteRoom);
 
   function setName(req, res) {
     const name = req.body.name;
@@ -125,6 +126,14 @@ module.exports = function (app) {
       .then(function (status) {
         res.send(status)
       })
+  }
+
+  function deleteRoom(req, res) {
+    var roomId = req.params['roomId'];
+    roomModel.deleteRoomById(roomId)
+      .then(response => res.json(response)
+  )
+    ;
   }
 
 };

@@ -93,6 +93,12 @@ function setFilters(roomId, filters) {
   });
 }
 
+function deleteRoomById(roomId) {
+  return roomModel.remove({
+    _id: roomId
+  })
+}
+
 var api = {
   getAllRooms: getAllRooms,
   createRoom: createRoom,
@@ -105,7 +111,8 @@ var api = {
   addRoomResult: addRoomResult,
   setName: setName,
   setFilters: setFilters,
-  addVotes: addVotes
+  addVotes: addVotes,
+  deleteRoomById: deleteRoomById
 };
 
   module.exports = api;
